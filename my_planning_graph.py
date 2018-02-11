@@ -514,9 +514,9 @@ class PlanningGraph():
         # TODO test for Inconsistent Support between nodes
         for pre_s1 in node_s1.parents:
             for pre_s2 in node_s2.parents:
-                if pre_s1.is_mutex(pre_s2):
-                    return True
-        return False
+                if not pre_s1.is_mutex(pre_s2):
+                    return False
+        return True
 
     def h_levelsum(self) -> int:
         """The sum of the level costs of the individual goals (admissible if goals independent)
